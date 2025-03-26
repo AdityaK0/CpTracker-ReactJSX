@@ -168,7 +168,7 @@ export default function CompareUsers() {
   const wins = calculateWins();
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-6">
+    <div className="flex flex-col items-center w-full min-h-screen bg-gray-900 text-white p-6">
       <h1 className="text-3xl font-bold mt-6">Compare CP Users</h1>
 
       <div className="mt-6 flex gap-4">

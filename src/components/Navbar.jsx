@@ -52,10 +52,8 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-800 p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
         <NavLink to="/" className="text-2xl font-bold">CP Tracker</NavLink>
 
-        {/* Mobile Menu Button */}
         <button 
           className="md:hidden text-white text-2xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -63,7 +61,6 @@ export default function Navbar() {
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
 
-        {/* Nav Links (Desktop) */}
         <div className="hidden md:flex space-x-4">
           {["Home", "LeetCode", "Codeforces", "Compare"].map((item, index) => (
             <NavLink
@@ -81,7 +78,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Nav Menu */}
       {isOpen && (
         <div className="md:hidden h-screen w-[40%]  flex flex-col z-10 absolute items-center right-0 bg-gray-900 p-4">
           {["Home", "LeetCode", "Codeforces", "Compare"].map((item, index) => (

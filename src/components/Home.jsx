@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-6">
+    <div className="flex flex-col items-center w-full min-h-screen bg-gray-900 text-white p-6">
       <h1 className="text-4xl font-bold mt-6">Competitive Programming Tracker</h1>
       <p className="text-gray-400 mt-2">Select a platform to view user stats</p>
 

@@ -49,10 +49,8 @@ export default function Details() {
   const updateSearchHistory = (searchUsername) => {
     const platformHistory = searchHistory[platform] || [];
 
-    // Remove if already exists to avoid duplicates
     const filteredHistory = platformHistory.filter(item => item !== searchUsername);
 
-    // Add to the beginning of the array
     const newHistory = [searchUsername, ...filteredHistory].slice(0, 5);
     const updatedHistory = {
       ...searchHistory,
@@ -67,9 +65,8 @@ export default function Details() {
     try {
       if (platform === "codeforces") {
         const response = await axios.get("https://codeforces.com/api/user.ratedList?activeOnly=true");
-        setLeaderboard(response.data.result.slice(0, 5)); // Top 5 Users
+        setLeaderboard(response.data.result.slice(0, 5)); 
       } else if (platform === "leetcode") {
-        // Assuming you have a third-party API for LeetCode leaderboard
         const response = await axios.get("https://third-party-leetcode-api.com/leaderboard");
         setLeaderboard(response.data.slice(0, 5)); // Top 5 Users
       }
@@ -83,9 +80,8 @@ export default function Details() {
       if (platform === "codeforces") {
         const response = await axios.get("https://codeforces.com/api/contest.list");
         const upcoming = response.data.result.filter(contest => contest.phase === "BEFORE");
-        setContests(upcoming.slice(0, 3)); // Show next 3 contests
+        setContests(upcoming.slice(0, 3)); 
       } else if (platform === "leetcode") {
-        // Mock data for LeetCode contests
         setContests([
           { name: "Weekly Contest 345", startTimeSeconds: (Date.now() / 1000) + 86400 },
           { name: "Biweekly Contest 123", startTimeSeconds: (Date.now() / 1000) + 345600 },
@@ -130,7 +126,6 @@ export default function Details() {
     fetchUpcomingContests();
   }, [platform]);
 
-  // Time formatter for contests
   const formatContestTime = (timestamp) => {
     const date = new Date(timestamp * 1000);
     return new Intl.DateTimeFormat('en-US', {
@@ -141,7 +136,6 @@ export default function Details() {
     }).format(date);
   };
 
-  // Get the platform color
   const getPlatformColor = () => {
     return platform === "leetcode" ? "yellow-500" : "blue-500";
   };
@@ -152,11 +146,10 @@ export default function Details() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-6">
+    <div className="flex flex-col items-center w-full min-h-screen bg-gray-900 text-white p-6">
       <h1 className={`text-3xl font-bold mt-6 text-${getPlatformColor()}`}>
         {platform === "leetcode" ? "LeetCode" : "Codeforces"} User Stats
       </h1>
-      {/* Input Field with History Button */}
       <div className="mt-6 flex gap-3">
         <div className="relative">
           <input
